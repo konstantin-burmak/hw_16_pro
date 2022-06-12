@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>homework16</title>
+</head>
+
+<body>
+    <script>
+        function fibonachiFoo() {
+            const cache = new Map();
+
+            return (n) => {
+                const result = [];
+
+                function* fibonacci() {
+                    [a, b] = [0, 1]
+                    while (true) {
+                        yield a;
+                        [a, b] = [b, a + b];
+                    }
+                }
+
+                let fi = fibonacci();
+
+                for (let i = 0; i < n; i++) {
+                    result.push(fi.next().value);
+                };
+                console.log(result);
+
+                if (!cache.has(n)) {
+                    cache.set(n, result);
+                    console.log(cache);
+                }
+                
+                return fi;
+            }
+        }
+            
+
+        const fibo = fibonachiFoo();
+        const fibo1 = fibo(5);
+        const fibo2 = fibo(5);
+        const fibo3 = fibo(15);
+
+    </script>
+</body>
+</html>
