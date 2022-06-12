@@ -10,6 +10,7 @@
     <script>
         function fibonachiFoo() {
             const cache = new Map();
+            console.log('Cache ', cache);
 
             return (n) => {
                 const result = [];
@@ -27,11 +28,12 @@
                 for (let i = 0; i < n; i++) {
                     result.push(fi.next().value);
                 };
-                console.log(result);
 
                 if (!cache.has(n)) {
                     cache.set(n, result);
-                    console.log(cache);
+                    console.log('No cached array: ', cache.get(n));
+                } else if (cache.has(n)) {
+                    console.log('Cached array: ', cache.get(n));
                 }
                 
                 return fi;
@@ -41,8 +43,10 @@
 
         const fibo = fibonachiFoo();
         const fibo1 = fibo(5);
-        const fibo2 = fibo(5);
-        const fibo3 = fibo(15);
+        const fibo2 = fibo(6);
+        const fibo4 = fibo(6);
+        const fibo5 = fibo(15);
+        const fibo6 = fibo(15);
 
     </script>
 </body>
